@@ -1,6 +1,7 @@
-
 Gossip algorithm:
+
 Gossip type algorithms can be used both for group communication and for aggregate computation. The goal of this project is to determine the convergence of such algorithms through a simulator based on actors written in Scala. Since actors in Scala are fully asynchronous, the particular type of Gossip implemented is the so called Asynchronous Gossip. Gossip Algorithm for information propagation The Gossip algorithm involves the following:
+
 1. Starting: A participant(actor) it told/sent a roumor(fact) by the main process
 2. Step: Each actor selects a random neighboor and tells it the roumor
 3. Termination: Each actor keeps track of rumors and how many times it has heard the rumor. It stops transmitting once it has heard the roumor 10 times (10 is arbitrary, you can play with other numbers).
@@ -16,6 +17,7 @@ Push-Sum algorithm for sum computation:
 
 Topologies:
 The actual network topology plays a critical role in the dissemination speed of Gossip protocols. As part of this project you have to experiment with various topologies. The topology determines who is considered a neighboor in the above algorithms.
+
 1. Full Network Every actor is a neighboor of all other actors. That is, every actor can talk directly to any other actor.
 2. 2D Grid: Actors form a 2D grid. The actors can only talk to the grid neigboors.
 3. Line: Actors are arranged in a line. Each actor has only 2 neighboors (one left and one right, unless you are the rst or last actor).
