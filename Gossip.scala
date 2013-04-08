@@ -39,10 +39,6 @@ object Gossip {
       val rumorBreak:Int = 10;
       val divergence:Int = 2;
       
-      //var numNodes:Int = 2500
-      //var topology:String = impTwoD
-      //var algorithm:String = gossip
-      
       var numNodes:Int = args(0).toInt
       var topology:String = args(1)
       var algorithm:String = args(2)
@@ -60,9 +56,7 @@ object Gossip {
         i += 1
       }
       
-      //println("allPlayers count: "+allPlayers.length)
-      
-        if(full.equalsIgnoreCase(topology)){
+      if(full.equalsIgnoreCase(topology)){
           //println("Inside Full ...")
           var i:Int = 0
           while(i<allPlayers.length){
@@ -137,10 +131,6 @@ object Gossip {
         }
       
       statusKeeper ! InitKeeper(system, numNodes, rumorBreak, algorithm)
-      /*var randomPlayer = Random.nextInt(allPlayers.length)
-      println("Going to send message to a random Player ... "+randomPlayer)
-      allPlayers(randomPlayer) ! Gossip*/
-      
       if(algorithm.equalsIgnoreCase(gossip)){
         allPlayers(0) ! Gossip
       }else{
@@ -152,9 +142,7 @@ object Gossip {
           var randomPlayer = Random.nextInt(allPlayers.length)
           allPlayers(randomPlayer) ! PushSumGossip(0,1)
         }
-        /*var randomPlayer = Random.nextInt(allPlayers.length)
-        allPlayers(randomPlayer) ! PushSumGossip(0,1)*/
-        //statusKeeper ! PoisonPill
+      
       }
       
       
@@ -212,8 +200,6 @@ case class Player extends Actor{
           div = divergence
           allPlayers = allNodes
           
-          //println("Started PlayerID: "+uniqueId)
-          //println("For PlayerID: "+uniqueId+" nebioughrs:  "+neighborList.length+"  ---  "+neighbors.length)
         }
         
         
@@ -249,12 +235,6 @@ case class Player extends Actor{
           if(rumorCounter==1 || Math.abs((oldSbyW-newSbyW))>rumorTerminationPush) {
         	  stabilityCounter=0;
         	  
-	          //if(rumorCounter==1) println("Initial Condition --- For Actor "+playerId+" s/w: "+(s/w));
-        	  
-        	  //if(playerId==0) println("Initial Condition (Player:"+playerId+") --- For rumorCount "+rumorCounter+" s/w: "+(s/w));
-        	  
-        	  //println("(Player:"+playerId+") --- For rumorCount "+rumorCounter+" s: "+s+"  w: "+w);
-	          
 	          for(c<- 1 until div){
 	            //println("From Actor: "+playerId+"\tSending Message ... Sum: "+s+" Weight: "+w);
 	            var randomPlayer = Random.nextInt(neighbors.length);
