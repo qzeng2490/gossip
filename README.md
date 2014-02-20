@@ -22,3 +22,11 @@ The actual network topology plays a critical role in the dissemination speed of 
 2. 2D Grid: Actors form a 2D grid. The actors can only talk to the grid neigboors.
 3. Line: Actors are arranged in a line. Each actor has only 2 neighboors (one left and one right, unless you are the rst or last actor).
 4. Imperfect 2D Grid: Grid arrangement but one random other neighboor is selected from the list of all actors (4+1 neighboors).
+
+what is working:
+First, we create the List of actors , according to the topology , we initiate the neighbors of each actor and send the message that contains the neighbors information of neighbors and the List that contains all the nodes and actor Listener which determines the termination of the whole system. In terms of gossip algorithm , if an actor has heard from other actors less than 10 times, it send a message to listener so that the actor will be added to another List that keep track of actors that have been informed of the gossip , when most majority of actors have heard the gossip , the whole system shutdown. On the other hand , push-sum algorithm works in anther way. When an actor receives from other actor , it adds both s and w to itself and then send half of its s and w to other actors , when an actor an actors ratio did not change more than 10?10 in 3 consecutive rounds the actor send a message to listener , and the system shutdown. Also , we have tested push-sum algorithm and it really works to calculate the sum of 0 to N-1.
+
+
+
+
+
